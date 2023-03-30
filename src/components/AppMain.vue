@@ -15,15 +15,18 @@ export default {
     <main>
         <div>
             <label for="search"></label>
-            <input type="text" id="search" placeholder="Search film" v-model="this.store.searchQuery">
+            <input type="text" id="search" placeholder="Search film" v-model="this.store.searchQuery" @keyup.enter="$emit('search')">
             <button @click="$emit('search')">Search</button>
-            <div v-for="film in this.store.films" v-if="this.store.films.length !== 0">
-                <div>Title: {{ film.title }}</div>
-                <div>Original title: {{ film.original_title }}</div>
-                <div>Original Language: {{ film.original_language }}</div>
-                <div>Vote: {{ film.vote_average }}</div>
+            <div>
+                <h1>Movies</h1>
+                <div v-for="film in this.store.films" v-if="this.store.films.length !== 0">
+                    <div>Title: {{ film.title }}</div>
+                    <div>Original title: {{ film.original_title }}</div>
+                    <div>Original Language: {{ film.original_language }}</div>
+                    <div>Vote: {{ film.vote_average }}</div>
+                </div>
+                <div v-else>No movies</div>
             </div>
-            <div v-else>No films or tvshow</div>
         </div>
     </main>
 </template>
