@@ -2,16 +2,20 @@
 import { store } from './store';
 import axios from 'axios';
 
+import AppMain from './components/AppMain.vue'
+
 export default {
   name: 'App',
+  components: {
+    AppMain
+  },
   data() {
     return {
       store
     }
   },
   methods: {
-    // Test API
-    testAPI(baseURL, query) {
+    callAPI(baseURL, query, type) {
       const request = baseURL
 
       axios.get(request, {
@@ -21,28 +25,38 @@ export default {
           query: query
         }
       })
-        .then(function (response) {
-          console.log(request)
+        .then((response) => {
+          console.log("Request URL", request)
           console.log("Response", response.data.results);
+
+          if (type === 'films') {
+            this.store.films = []
+            this.store.films = response.data.results
+            console.log("Films", this.store.films)
+          } else {
+            this.store.tv = []
+            this.store.tv = response.data.results
+            console.log("Shows", this.store.tv)
+          }  
         })
-        .catch(function (error) {
-          console.log("Error", error.data.results);
+        .catch((error) => {
+          console.log("Error", error);
         })
     },
     // Test API with movie and tv show
     performAPITest() {
-      this.testAPI(this.store.baseURLTv, 'Lord of the rings')
-      this.testAPI(this.store.baseURLTv, 'Prison Break')
+      this.callAPI(this.store.baseURLMovies, 'Lord of the rings', 'films')
+      this.callAPI(this.store.baseURLTv, 'Prison Break', 'tv')
     }
   },
   mounted() {
-    this.performAPITest()
+    // this.performAPITest()
   }
 }
 </script>
 
 <template>
-  <div>Hello, World!</div>
+  <AppMain @search="callAPI(this.store.baseURLMovies,this.store.searchQuery, 'films')"></AppMain>
 </template>
 
 <style scoped></style>
