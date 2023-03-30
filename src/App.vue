@@ -36,8 +36,8 @@ export default {
           } else {
             this.store.tvShows = []
             this.store.tvShows = response.data.results
-            console.log("Shows", this.store.tv)
-          }  
+            console.log("Shows", this.store.tvShows)
+          }
         })
         .catch((error) => {
           console.log("Error", error);
