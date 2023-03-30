@@ -34,8 +34,8 @@ export default {
             this.store.films = response.data.results
             console.log("Films", this.store.films)
           } else {
-            this.store.tv = []
-            this.store.tv = response.data.results
+            this.store.tvShows = []
+            this.store.tvShows = response.data.results
             console.log("Shows", this.store.tv)
           }  
         })
@@ -47,6 +47,10 @@ export default {
     performAPITest() {
       this.callAPI(this.store.baseURLMovies, 'Lord of the rings', 'films')
       this.callAPI(this.store.baseURLTv, 'Prison Break', 'tv')
+    },
+    search() {
+      this.callAPI(this.store.baseURLMovies, this.store.searchQuery, 'films')
+      this.callAPI(this.store.baseURLTv, this.store.searchQuery, 'tv')
     }
   },
   mounted() {
@@ -56,7 +60,7 @@ export default {
 </script>
 
 <template>
-  <AppMain @search="callAPI(this.store.baseURLMovies,this.store.searchQuery, 'films')"></AppMain>
+  <AppMain @search="search()"></AppMain>
 </template>
 
 <style scoped></style>
