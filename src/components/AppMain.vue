@@ -36,6 +36,7 @@ export default {
             <div>
                 <h1>Movies</h1>
                 <div v-for="film in this.store.films" v-if="this.store.films.length !== 0">
+                    <img :src="`${this.store.baseURLImg}${film.backdrop_path}`" alt="">
                     <div>Title: {{ film.title }}</div>
                     <div>Original title: {{ film.original_title }}</div>
                     <span>Original Language: </span>
@@ -47,6 +48,7 @@ export default {
             <div>
                 <h1>Tv Shows</h1>
                 <div v-for="tv in this.store.tvShows" v-if="this.store.tvShows.length !== 0">
+                    <img :src="`${this.store.baseURLImg}${tv.backdrop_path}`" alt="">
                     <div>Title: {{ tv.name }}</div>
                     <div>Original title: {{ tv.original_name }}</div>
                     <span>Original Language: </span>
