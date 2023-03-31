@@ -40,7 +40,7 @@ export default {
                     <div>Original title: {{ film.original_title }}</div>
                     <span>Original Language: </span>
                     <country-flag :country='flag(film.original_language)' size='small' />
-                    <div>Vote: {{ film.vote_average }}</div>
+                    <div>Vote: {{ film.vote_average.customRound() }}</div>
                 </div>
                 <div v-else>No movies</div>
             </div>
@@ -51,7 +51,7 @@ export default {
                     <div>Original title: {{ tv.original_name }}</div>
                     <span>Original Language: </span>
                     <country-flag :country='flag(tv.original_language)' size='small' />
-                    <div>Vote: {{ tv.vote_average }}</div>
+                    <div>Vote: {{ tv.vote_average.customRound() }}</div>
                 </div>
                 <div v-else>No tv shows</div>
             </div>

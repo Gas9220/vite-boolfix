@@ -9,3 +9,9 @@ import App from './App.vue'
 
 // App mounted
 createApp(App).mount('#app')
+
+// Prototype
+Number.prototype.customRound = function() {
+    const halfValue = this.valueOf() / 2;
+    return Math.ceil(halfValue)
+  };
