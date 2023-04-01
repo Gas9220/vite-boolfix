@@ -11,28 +11,47 @@ export default {
     },
     components: {
         CardItem
+    },
+    computed: {
+        emptyFilmsOrShows() {
+            if ((this.store.films.length === 0) && (this.store.tvShows.length === 0)) {
+                return true
+            }
+            return false
+        }
     }
 }
 </script>
 
 <template>
     <main>
-        <div class="card movies" v-if="this.store.films.length !== 0">
-            <h1>Movies</h1>
-            <div class="content">
-                <div v-for="film in this.store.films">
-                    <CardItem :item="film"></CardItem>
+        <div class="no-results" v-if="emptyFilmsOrShows">Search for films or tv shows</div>
+        <div v-else>
+            <div class="card">
+                <h1>Movies</h1>
+                <div class="movies" v-if="this.store.films.length !== 0">
+                    <div class="content">
+                        <div v-for="film in this.store.films">
+                            <CardItem :item="film"></CardItem>
+                        </div>
+                    </div>
                 </div>
+                <div v-else>No films founded for {{ this.store.searchQuery }}</div>
+            </div>
+
+            <div class="card">
+                <h1>TV Shows</h1>
+                <div class="tv-shows" v-if="this.store.tvShows.length !== 0">
+                    <div class="content">
+                        <div v-for="tv in this.store.tvShows">
+                            <CardItem :item="tv"></CardItem>
+                        </div>
+                    </div>
+                </div>
+                <div v-else>No tv shows founded for {{ this.store.searchQuery }}</div>
             </div>
         </div>
-        <div class="card tv-shows" v-if="this.store.tvShows.length !== 0">
-            <h1>TV Shows</h1>
-            <div class="content">
-                <div v-for="tv in this.store.tvShows">
-                    <CardItem :item="tv"></CardItem>
-                </div>
-            </div>
-        </div>
+
     </main>
 </template>
 
@@ -40,16 +59,17 @@ export default {
 main {
     color: white;
     padding: 0.625rem;
+    .no-results {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        font-size: 3rem;
+        font-weight: bold;
+    }
 
     .card {
-        &.tv-shows {
-            margin-top: 1.5625rem;
-        }
-
-        h1 {
-            margin-bottom: 0.625rem;
-        }
-
+        margin-bottom: 20px;
         .content {
             overflow-y: auto;
             display: flex;
