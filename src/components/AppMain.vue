@@ -35,10 +35,7 @@ export default {
 <template>
     <main>
         <div>
-            <label for="search"></label>
-            <input type="text" id="search" placeholder="Search film" v-model="this.store.searchQuery"
-                @keyup.enter="$emit('search')">
-            <button @click="$emit('search')">Search</button>
+
             <div>
                 <h1>Movies</h1>
                 <div v-for="film in this.store.films" v-if="this.store.films.length !== 0">
