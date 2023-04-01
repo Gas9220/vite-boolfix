@@ -70,6 +70,7 @@ main {
 
     .card {
         margin-bottom: 20px;
+        width: 100%;
         .content {
             overflow-y: auto;
             display: flex;
