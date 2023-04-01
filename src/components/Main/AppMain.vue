@@ -48,7 +48,7 @@ export default {
                         </div>
                     </div>
                 </div>
-                <div v-else>No tv shows founded for {{ this.store.searchQuery }}</div>
+                <div v-else>No tv shows founded for "{{ this.store.searchQuery }}"</div>
             </div>
         </div>
 
