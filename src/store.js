@@ -18,6 +18,3 @@ export const store = reactive({
     // Language of the request
     language: 'it'
 })
-
-
-//https://api.themoviedb.org/3/search/tv?api_key=c19cace3f5571244b4a9b08323eb49f9&query=prison
