@@ -3,7 +3,7 @@ import { store } from './store';
 import axios from 'axios';
 
 import AppHeader from './components/Header/AppHeader.vue';
-import AppMain from './components/AppMain.vue'
+import AppMain from './components/Main/AppMain.vue'
 
 export default {
   name: 'App',
@@ -62,8 +62,16 @@ export default {
 </script>
 
 <template>
-  <AppHeader @search="search()"></AppHeader>
+  <div class="container">
+    <AppHeader @search="search()"></AppHeader>
   <AppMain></AppMain>
+  </div>
+
 </template>
 
-<style scoped></style>
+<style scoped>
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+</style>

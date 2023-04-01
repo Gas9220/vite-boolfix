@@ -5,7 +5,7 @@ export const store = reactive({
     searchQuery: '',
     // Array that contains all tvShows that match with searchQuery
     tvShows: [],
-    // Array that contains all tvShows that match with searchQuery
+    // Array that contains all films that match with searchQuery
     films: [],
     // Base URL for search movies
     baseURLMovies: 'https://api.themoviedb.org/3/search/movie?',
