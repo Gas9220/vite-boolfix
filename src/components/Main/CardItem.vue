@@ -22,18 +22,11 @@ export default {
             }
             return this.item.overview.slice(0, 180).padEnd(183, '.')
         },
-        textStyle() {
-            if (this.item.backdrop_path === null) {
-                return 'title-style-alternative'
-            }
-
-            return 'title-style'
-        },
         coverImage() {
-            if (this.item.backdrop_path === null) {
+            if (this.item.poster_path === null) {
                 return './no-img.jpg'
             }
-            return `${this.store.baseURLImg}${this.item.backdrop_path}`
+            return `${this.store.baseURLImg}${this.item.poster_path}`
         },
         flag() {
             switch (this.item.original_language) {
@@ -53,7 +46,8 @@ export default {
             <div class="flip-card-inner">
                 <div class="flip-card-front">
                     <img :src="coverImage" alt="cover-img">
-                    <div class="title" :class="textStyle">{{ item.title || item.name }}</div>
+                    <div v-if="item.poster_path === null" class="title-style-alternative">{{ item.title || item.name }}
+                    </div>
                 </div>
                 <div class="flip-card-back">
                     <div>Title: {{ item.title || item.name }}</div>
@@ -71,39 +65,31 @@ export default {
                 </div>
             </div>
         </div>
-        <div>
-        </div>
     </article>
 </template>
 
 <style lang="scss" scoped>
-img {
-    width: 100%;
-    height: 100%;
-}
-
-.title-style {
-    background-color: rgba($color: #ffffff, $alpha: 0.8);
-    color: black;
-}
 .title-style-alternative {
     background-color: rgba($color: #000000, $alpha: 0.8);
     color: white;
-
-}
-
-.title {
     position: absolute;
-    left: 5px;
-    bottom: 5px;
+    left: 50%;
+    bottom: .3125rem;
+    transform: translate(-50%);
     padding: 5px;
     border-radius: 5px;
 }
 
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+}
+
 .flip-card {
     background-color: transparent;
-    width: 342px;
-    height: 192px;
+    width: 280px;
+    height: 380px;
 }
 
 .flip-card-inner {

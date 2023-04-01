@@ -70,16 +70,15 @@ main {
 
     .card {
         margin-bottom: 20px;
-        width: 100%;
         .content {
-            overflow-y: auto;
             display: flex;
             align-items: flex-start;
-            justify-content: flex-start;
+            justify-content: center;
+            flex-wrap: wrap;
             width: 100%;
 
             div {
-                padding: 0.625rem 1rem 0.625rem 0;
+                padding: 0.625rem 0 0.625rem 0;
             }
         }
     }
