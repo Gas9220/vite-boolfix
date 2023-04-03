@@ -22,6 +22,8 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use '../../assets/scss/_partial/variables' as *;
+
 header {
     display: flex;
     align-items: flex-end;
@@ -31,11 +33,6 @@ header {
     h1 {
         color: red;
     }
-
-    $primary: red;
-    $secondary: gray;
-    $white: #fff;
-    $gray: #9b9b9b;
 
     .form__group {
         position: relative;
@@ -89,7 +86,7 @@ header {
         padding-bottom: 6px;
         font-weight: 700;
         border-width: 3px;
-        border-image: linear-gradient(to right, $primary, $secondary);
+        border-image: linear-gradient(to right, $primary, $gray);
         border-image-slice: 1;
     }
 
