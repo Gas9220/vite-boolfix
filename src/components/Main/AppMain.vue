@@ -25,7 +25,9 @@ export default {
 
 <template>
     <main>
-        <div class="no-results" v-if="emptyFilmsOrShows">Search for films or tv shows</div>
+        <div class="no-results" v-if="emptyFilmsOrShows">
+            <h3>Search for films or tv shows</h3>
+        </div>
         <div v-else>
             <div class="card">
                 <h1>Movies</h1>
@@ -60,16 +62,25 @@ main {
     color: white;
     padding: 0.625rem;
     .no-results {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%,-50%);
-        font-size: 3rem;
-        font-weight: bold;
+        position: relative;
+        top: 1.875rem;
+        min-height: 400px;
+
+        h3 {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        background-image: url('/main-bg.jpg');
     }
 
     .card {
         margin-bottom: 20px;
+
         .content {
             display: flex;
             align-items: flex-start;
