@@ -14,7 +14,7 @@ Senza focus :
 
 Con focus : 
 
-![focus](./REAME-support/search-focus.JPG "focus")
+![focus](./REAME-support/search-focus.jpg "focus")
 
 ## Risultati ottenuti
 Avviando la ricerca, apparà una card per ogni film / serie trovata con la possibilità di fare hover con il mouse per visualizzare informazioni su di esso.
